@@ -1,0 +1,6 @@
+Usuario;rodrigo.soares@gmail.com;[(Morador,1)]
+Usuario;maria.silva.sindica@gmail.com;[(Morador,1),(Sindico,1)]
+Usuario;joao.costa@gmail.com;[(Morador,1),(Sindico,1),(Sindico,2)]
+Grupo;Morador;1;[(Reservas,Escrita),(Entregas,Nenhuma),(Usuarios,Leitura)]
+Grupo;Sindico;1;[(Reservas,Leitura),(Entregas,Nenhuma),(Usuarios,Escrita)]
+Grupo;Sindico;2;[(Reservas,Escrita),(Entregas,Leitura),(Usuarios,Escrita)] 

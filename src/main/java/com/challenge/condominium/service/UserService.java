@@ -1,7 +1,11 @@
 package com.challenge.condominium.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +24,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class UserService { 
+	
+	public File createFile (byte[] fileBytes) throws IOException {
+		//Decode bytes
+		Base64.Decoder dec = Base64.getDecoder();
+	    byte[] decbytes = dec.decode(fileBytes);
+		
+	    //Create file
+	    File newFile = new File("db.text");
+		FileOutputStream fos = new FileOutputStream(newFile); 
+		fos.write(decbytes); 
+		fos.close();
+		
+		return newFile; 
+	}
 	
 	public List<User> getUsersOfMap(List<Map<String,Object>> usersMap){
 		List<User> users = new ArrayList<User>();

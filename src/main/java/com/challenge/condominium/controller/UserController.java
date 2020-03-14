@@ -1,6 +1,7 @@
 package com.challenge.condominium.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -70,14 +71,14 @@ public class UserController {
 	} 
 	
 	@PostMapping("/database/read")
-	public ResponseEntity<?> readDatabase(@RequestBody String pathFile){
+	public ResponseEntity<?> readDatabase(@RequestBody byte[] fileBytes){
 		try {
 			List<Group> groups = new ArrayList<Group>();
 			List<User> users = new ArrayList<User>();
 			List<Long> condominiumsId =  new ArrayList<Long>();
-			
-			//pathFile = "/home/jessica/db.txt"; 
-			BufferedReader reader = new BufferedReader(new FileReader(pathFile.trim())); 
+			  
+			File newFile = userService.createFile(fileBytes);
+			BufferedReader reader = new BufferedReader(new FileReader(newFile.getPath())); 
 			String line = "";
 			
 			while ((line = reader.readLine()) != null){
